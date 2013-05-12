@@ -18,7 +18,7 @@
                 <tr>
                     <th>Nom</th>
                     <th>Terminé</th>
-                    <th>Durée épisode</th>
+                    <th>Durée par épisode</th>
                     <th>Nombre d'épisodes</th>
                     <th>Total</th>
                 </tr>
@@ -33,6 +33,10 @@
                         <td>${show[4]}</td>
                     </tr>
                 </c:forEach>
+                <tr>
+                    <td colspan="4" class="text-right"><strong>Total<strong></td>
+                    <td>${total}</td>
+                </tr>
             </tbody>
         </table>
     </div>

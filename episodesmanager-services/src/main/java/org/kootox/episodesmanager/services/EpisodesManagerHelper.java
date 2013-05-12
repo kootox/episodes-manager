@@ -27,7 +27,8 @@ package org.kootox.episodesmanager.services;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.kootox.episodesmanager.EpisodesManagerConfig;
-import org.nuiton.util.ApplicationConfig;
+
+import static org.nuiton.i18n.I18n._;
 
 /**
  * @author jcouteau
@@ -72,5 +73,109 @@ public class EpisodesManagerHelper {
             config = new EpisodesManagerConfig();
         }
         return config;
+    }
+
+    public static String convertIntoDays(long minutes) {
+        long finalMinutes;
+        long finalHours;
+        long finalDays;
+        long finalWeeks;
+        long finalMonths;
+        long finalYears;
+
+        //calculate finalMinutes;
+        finalHours = minutes/60;
+        finalMinutes = minutes - finalHours*60;
+
+        //calculate finalHours;
+        finalDays = finalHours/24;
+        finalHours = finalHours - finalDays*24;
+
+        //calculate finalDays;
+        finalWeeks = finalDays/7;
+        finalDays = finalDays - finalWeeks*7;
+
+        //calculate finalWeeks;
+        //Use 13/3 value, simplification of 52/12,
+        //normalized number of weeks per month.
+        finalMonths = finalWeeks * 3/13;
+        finalWeeks = finalWeeks - finalMonths * 13/3;
+
+        //calculate finalMonths and finalYears;
+        finalYears = finalMonths/12;
+        finalMonths = finalMonths - finalYears*12;
+
+        StringBuilder builder = new StringBuilder();
+
+        if (finalYears!=0){
+            builder.append(finalYears);
+            if (finalYears==1){
+                builder.append(_("episodesmanager.timespent.year"));
+            } else {
+                builder.append(_("episodesmanager.timespent.years"));
+            }
+            if ((finalMonths!=0)||(finalWeeks!=0)||(finalDays!=0)||(finalHours!=0)||(finalMinutes!=0)){
+                builder.append(", ");
+            }
+        }
+
+        if (finalMonths!=0){
+            builder.append(finalMonths);
+            if (finalMonths == 1) {
+                builder.append(_("episodesmanager.timespent.month"));
+            } else {
+                builder.append(_("episodesmanager.timespent.months"));
+            }
+            if ((finalWeeks != 0) || (finalDays != 0) || (finalHours != 0) || (finalMinutes != 0)) {
+                builder.append(", ");
+            }
+        }
+
+        if (finalWeeks!=0){
+            builder.append(finalWeeks);
+            if (finalWeeks == 1) {
+                builder.append(_("episodesmanager.timespent.week"));
+            } else {
+                builder.append(_("episodesmanager.timespent.weeks"));
+            }
+            if ((finalDays != 0) || (finalHours != 0) || (finalMinutes != 0)) {
+                builder.append(", ");
+            }
+        }
+
+        if (finalDays!=0){
+            builder.append(finalDays);
+            if (finalDays == 1) {
+                builder.append(_("episodesmanager.timespent.day"));
+            } else {
+                builder.append(_("episodesmanager.timespent.days"));
+            }
+            if ((finalHours != 0) || (finalMinutes != 0)) {
+                builder.append(", ");
+            }
+        }
+
+        if (finalHours!=0){
+            builder.append(finalHours);
+            if (finalHours == 1) {
+                builder.append(_("episodesmanager.timespent.hour"));
+            } else {
+                builder.append(_("episodesmanager.timespent.hours"));
+            }
+            if (finalMinutes != 0) {
+                builder.append(", ");
+            }
+        }
+
+        if (finalMinutes!=0){
+            builder.append(finalMinutes);
+            if (finalMinutes == 1) {
+                builder.append(_("episodesmanager.timespent.minute"));
+            } else {
+                builder.append(_("episodesmanager.timespent.minutes"));
+            }
+        }
+
+        return builder.toString();
     }
 }

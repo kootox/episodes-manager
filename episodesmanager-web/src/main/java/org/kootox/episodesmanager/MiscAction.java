@@ -15,8 +15,20 @@ public class MiscAction extends WebMotionController {
     public Render timeSpent() {
         EpisodesService episodesService = EpisodesManagerHelper.newService(EpisodesService.class);
         List<Object[]> table = episodesService.getTimeSpentTable();
+
+        Long total = 0L;
+
+        for (Object[] show:table) {
+            Long showTime = (Long)show[4];
+            total += showTime;
+            show[4] = EpisodesManagerHelper.convertIntoDays(showTime);
+        }
+
+        String totalString = EpisodesManagerHelper.convertIntoDays(total);
+
         return renderView("timeSpent.jsp",
-                "table",table);
+                "table", table,
+                "total", totalString);
     }
 
 }
