@@ -1,0 +1,99 @@
+<!--
+  #%L
+  episodesmanager-swing
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+<JDialog id='searchTVRageResultsUI'
+         title='episodesmanager.searchresults.title'
+        modal='true'
+        layout='{new BorderLayout()}'
+        defaultCloseOperation='{JDialog.HIDE_ON_CLOSE}'
+		preferredSize='{new Dimension(200,400)}'>
+    <!--width='800'
+    height='600'-->
+
+    <style source='../EpisodesManagerMainUI.css'/>
+
+    <!-- le modèle du tableau -->
+    <SearchResultTableModel id='searchResultTableModel'
+                            javaBean='getHandler().getSearchResultTableModel(true)'/>
+
+    <script><![CDATA[
+import jaxx.runtime.JAXXContext;
+import org.kootox.episodesmanager.ui.EpisodesManagerMainUIHandler;
+import org.kootox.episodesmanager.ui.common.renderer.BooleanRenderer;
+import java.awt.Dimension;
+
+public SearchTVRageResultsUI(JAXXContext parentContext, Window parent) {
+    super(parent);
+    SwingUtil.initContext(this, parentContext);
+}
+
+SearchResultHandler getHandler() {
+    return getContextValue(SearchResultHandler.class);
+}
+
+void importSelected() {
+    getHandler().importSeries();
+    hide();
+}
+
+void $afterCompleteSetup() {
+    results.getColumn(_("episodesmanager.search.select")).setCellRenderer(new BooleanRenderer());
+    results.getColumn(_("episodesmanager.search.select")).setMinWidth(18);
+    results.getColumn(_("episodesmanager.search.select")).setMaxWidth(18);
+    results.getColumn(_("episodesmanager.search.title")).setPreferredWidth(400);
+    searchResultsPanel.setMinimumSize(new Dimension(450,20));
+
+    searchTVRageResultsUI.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent we) {
+            EpisodesManagerContext.SEARCHRESULT_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),false);
+        }
+
+        public void windowOpened(WindowEvent we) {
+            EpisodesManagerContext.SEARCHRESULT_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),true);
+        }
+    });
+    setLocationRelativeTo(null);
+}
+]]>
+    </script>
+
+
+    <JPanel id='searchResultsPanel' layout='{new BorderLayout()}'>
+		<JScrollPane id="scroll" constraints="BorderLayout.CENTER">
+			<JTable id='results'
+					model='{searchResultTableModel}'
+					/>
+		</JScrollPane>
+
+		<JButton id='importButton'
+             actionIcon='import'
+             text='episodesmanager.common.import'
+             onActionPerformed='importSelected()'
+                constraints="BorderLayout.SOUTH"/>
+	</JPanel>
+
+    
+</JDialog>

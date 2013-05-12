@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <!-- ************************************************************* -->
+    <!-- *** POM Relationships *************************************** -->
+    <!-- ************************************************************* -->
+
+    <parent>
+        <groupId>org.kootox</groupId>
+        <artifactId>episodesmanager</artifactId>
+        <version>0.3.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.kootox.episodesmanager</groupId>
+    <artifactId>episodesmanager-services</artifactId>
+
+    <dependencies>
+
+         <!-- sibling dependencies -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>episodesmanager-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- service de migration -->
+        <dependency>
+            <groupId>org.nuiton.topia</groupId>
+            <artifactId>topia-service-migration</artifactId>
+        </dependency>
+        
+        <!-- opencsv dependencies -->
+
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+        <!-- databases dependencies -->
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+      </dependency>
+
+		<dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+          </dependency>
+
+    </dependencies>
+
+    <!-- ************************************************************* -->
+    <!-- *** Project Information ************************************* -->
+    <!-- ************************************************************* -->
+
+    <name>${project.artifactId}</name>
+    <description>Episodes Manager services module</description>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Settings ****************************************** -->
+    <!-- ************************************************************* -->
+
+    <packaging>jar</packaging>
+
+    <build>
+        
+        <plugins>
+            
+            <plugin>
+                <groupId>org.nuiton.i18n</groupId>
+                <artifactId>maven-i18n-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>parserJava</goal>
+                            <goal>gen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

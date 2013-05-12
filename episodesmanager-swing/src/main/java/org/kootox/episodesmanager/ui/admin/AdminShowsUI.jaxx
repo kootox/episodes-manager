@@ -1,0 +1,108 @@
+<!--
+  #%L
+  episodesmanager-swing
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+<JDialog id='adminShowsUI'
+         width='800'
+         height='600'
+         title='episodesmanager.admin.title'
+         modal='true'
+         layout='{new BorderLayout()}'
+         defaultCloseOperation='{JDialog.HIDE_ON_CLOSE}'>
+
+    <style source='../EpisodesManagerMainUI.css'/>
+
+    <JPanel id='contentLayout' layout='{new BorderLayout()}'>
+
+        <script><![CDATA[
+import org.kootox.episodesmanager.ui.common.renderer.DateRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.BooleanRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.CenteredLabelRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.ColumnHeaderRenderer;
+import jaxx.runtime.JAXXContext;
+import jaxx.runtime.decorator.DecoratorProvider;
+import org.jdesktop.swingx.JXTable;
+import org.jdesktop.swingx.JXTreeTable;
+import javax.swing.tree.TreeSelectionModel;
+
+public AdminShowsUI(JAXXContext parentContext, Window parent) {
+    super(parent);
+    SwingUtil.initContext(this, parentContext);
+}
+
+AdminShowsHandler getHandler() {
+    return getContextValue(AdminShowsHandler.class);
+}
+
+void $afterCompleteSetup() {
+    admin.getColumn(_("episodesmanager.admin.airingDate")).setCellRenderer(new DateRenderer());
+    admin.getColumn(_("episodesmanager.admin.acquired")).setCellRenderer(new BooleanRenderer());
+    admin.getColumn(_("episodesmanager.admin.watched")).setCellRenderer(new BooleanRenderer());
+    admin.getColumn(_("episodesmanager.admin.ignored")).setCellRenderer(new BooleanRenderer());
+    admin.getColumn(_("episodesmanager.admin.number")).setCellRenderer(new CenteredLabelRenderer());
+    admin.getColumn(_("episodesmanager.admin.number")).setHeaderRenderer(new ColumnHeaderRenderer());
+    admin.getColumn(_("episodesmanager.admin.watched")).setHeaderRenderer(new ColumnHeaderRenderer());
+    admin.getColumn(_("episodesmanager.admin.acquired")).setHeaderRenderer(new ColumnHeaderRenderer());
+    admin.getColumn(_("episodesmanager.admin.ignored")).setHeaderRenderer(new ColumnHeaderRenderer());
+    admin.getColumn(_("episodesmanager.admin.airingDate")).setHeaderRenderer(new ColumnHeaderRenderer());
+    admin.getColumn(_("episodesmanager.admin.serie")).setHeaderRenderer(new ColumnHeaderRenderer());
+
+    adminShowsUI.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent we) {
+            AdminShowsHandler handler = getHandler();
+            if (handler != null) {
+                handler.close(AdminShowsUI.this);
+            }
+        }
+
+        public void windowOpened(WindowEvent we) {
+            EpisodesManagerContext.ADMINSHOWS_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),true);
+        }
+    });
+    setLocationRelativeTo(null);
+}
+]]></script>
+
+        <JScrollPane border='{null}'
+                     horizontalScrollBarPolicy='{JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED}'
+                     verticalScrollBarPolicy='{JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED}'
+                     constraints="BorderLayout.CENTER">
+
+            <JXTreeTable id='admin'
+                         font-size='11'
+                         rootVisible='false'
+                         showsRootHandles='true'
+                         treeTableModel='{new AdminShowsModel()}'
+                         selectionMode='{TreeSelectionModel.SINGLE_TREE_SELECTION}'/>
+
+        </JScrollPane>
+
+        <JButton id='close'
+                 text='episodesmanager.common.close'
+                 onActionPerformed='getHandler().close(this);'
+                 constraints="BorderLayout.SOUTH"/>
+
+    </JPanel>
+
+</JDialog>

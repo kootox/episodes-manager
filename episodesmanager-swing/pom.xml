@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ************************************************************* -->
+    <!-- *** POM Relationships *************************************** -->
+    <!-- ************************************************************* -->
+
+    <parent>
+        <groupId>org.kootox</groupId>
+        <artifactId>episodesmanager</artifactId>
+        <version>0.3.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.kootox.episodesmanager</groupId>
+    <artifactId>episodesmanager-swing</artifactId>
+
+    <dependencies>
+
+        <!-- sibling dependencies -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>episodesmanager-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>episodesmanager-services</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- jaxx dependencies -->
+
+        <dependency>
+            <groupId>org.nuiton.jaxx</groupId>
+            <artifactId>jaxx-runtime</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.nuiton.jaxx</groupId>
+            <artifactId>jaxx-widgets</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ************************************************************* -->
+    <!-- *** Project Information ************************************* -->
+    <!-- ************************************************************* -->
+
+    <name>${project.artifactId}</name>
+    <description>Episodes Manager Swing User Interface</description>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Settings ****************************************** -->
+    <!-- ************************************************************* -->
+    <properties>
+
+        <!--main class in JAR -->
+        <maven.jar.main.class>org.kootox.episodesmanager.EpisodesManagerRunner</maven.jar.main.class>
+        
+        <!-- jaxx configuration -->
+        <jaxx.addProjectClassPath>true</jaxx.addProjectClassPath>
+        <jaxx.addSourcesToClassPath>true</jaxx.addSourcesToClassPath>
+        <jaxx.useUIManagerForIcon>true</jaxx.useUIManagerForIcon>
+
+        <jaxx.extraImportList>
+            org.kootox.episodesmanager.entities.*,
+            org.kootox.episodesmanager.EpisodesManagerContext,
+            jaxx.runtime.swing.editor.*,
+            static jaxx.runtime.JAXXUtil.getStringValue,
+            static org.nuiton.i18n.I18n.n_,
+            static org.nuiton.i18n.I18n._,
+            java.awt.event.WindowAdapter,
+            java.awt.event.WindowEvent
+        </jaxx.extraImportList>
+
+    </properties>
+
+    <packaging>jar</packaging>
+
+    <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.nuiton.jaxx</groupId>
+                <artifactId>maven-jaxx-plugin</artifactId>
+                <version>${jaxxVersion}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                            <!--goal>generate-help</goal-->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+
+                <configuration>
+                    <generateBundle>true</generateBundle>
+                    <licenseName>gpl_v3</licenseName>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>attach-licenses</id>
+                        <goals>
+                            <goal>update-project-license</goal>
+                            <goal>add-third-party</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.nuiton.i18n</groupId>
+                <artifactId>maven-i18n-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>scan-sources</id>
+                    <goals>
+                      <goal>parserJava</goal>
+                      <goal>parserValidation</goal>
+                      <goal>gen</goal>
+                    </goals>
+                    <configuration>
+                      <entries>
+                        <entry>
+                          <basedir>${maven.gen.dir}/java/</basedir>
+                        </entry>
+                      </entries>
+                    </configuration>
+                  </execution>
+                  <execution>
+                    <id>make-bundle</id>
+                    <goals>
+                      <goal>bundle</goal>
+                    </goals>
+                  </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/lib</outputDirectory>
+                            <silent>true</silent>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>./lib/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!--descriptors>
+                        <descriptor>src/main/assembly/bin.xml</descriptor>
+                    </descriptors-->
+                    <archive>
+                        <manifest>
+                            <mainClass>${maven.jar.main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-assemblies</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Environment  ************************************** -->
+    <!-- ************************************************************* -->
+
+    <profiles>
+        <profile>
+            <id>release-profile</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>create-assemblies</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+</project>

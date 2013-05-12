@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  episodesmanager-entities
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field" auto-import="true" package="org.kootox.episodesmanager.entities">
+    <class name="org.kootox.episodesmanager.entities.EpisodeImpl" table="episode" node="org.kootox.episodesmanager.entities.EpisodeImpl" abstract="false" proxy="org.kootox.episodesmanager.entities.Episode" >
+        <id name="topiaId" type="string" length="255" node="@topiaId"/>
+        <version name="topiaVersion" type="long" node="@topiaVersion"/>
+        <property name="topiaCreateDate" type="timestamp" node="@topiaCreateDate"/>
+        <property name="title" type="java.lang.String" access="field" column="title" node="title"/>
+        <property name="airingDate" type="java.util.Date" access="field" column="airingDate" node="airingDate"/>
+        <property name="acquired" type="java.lang.Boolean" access="field" column="acquired" node="acquired"/>
+        <property name="viewed" type="java.lang.Boolean" access="field" column="viewed" node="viewed"/>
+        <property name="episodeNumber" type="java.lang.Integer" access="field" column="episodeNumber" node="episodeNumber"/>
+        <property name="Summary" type="java.lang.String" access="field" column="summary" node="Summary"/>
+        <many-to-one name="season" class="org.kootox.episodesmanager.entities.SeasonImpl" column="season" lazy="false"  node="season/@topiaId" embed-xml="false"/>
+    </class>
+</hibernate-mapping>

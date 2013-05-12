@@ -1,0 +1,11 @@
+Version 0.2.0
+-------------
+
+- Add Migration service
+- Add License plugin use
+- Add infos to shows (not displayed in UI)
+- Add Export/Import to XML/CSV
+- Rename Serie into Show everywhere
+- Use Eugene 2.0
+- Use Topia 2.3
+- Use Nuiton I18n 1.2

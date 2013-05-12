@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <!-- ************************************************************* -->
+    <!-- *** POM Relationships *************************************** -->
+    <!-- ************************************************************* -->
+
+    <parent>
+        <groupId>org.kootox</groupId>
+        <artifactId>episodesmanager</artifactId>
+        <version>0.3.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.kootox.episodesmanager</groupId>
+    <artifactId>episodesmanager-entities</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.nuiton</groupId>
+            <artifactId>nuiton-utils</artifactId>
+        </dependency>
+        
+        <!-- comons dependencies -->
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+
+        <!-- ToPIA dependencies -->
+
+        <dependency>
+            <groupId>org.nuiton.topia</groupId>
+            <artifactId>topia-persistence</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3</artifactId>
+        </dependency>
+
+        <!-- databases dependencies -->
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ************************************************************* -->
+    <!-- *** Project Information ************************************* -->
+    <!-- ************************************************************* -->
+
+    <name>${project.artifactId}</name>
+    <description>Episodes Manager entities module</description>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Settings ****************************************** -->
+    <!-- ************************************************************* -->
+
+    <packaging>jar</packaging>
+
+    <build>
+
+        <resources>
+            <resource>
+                <directory>${maven.gen.dir}/resources</directory>
+                <includes>
+                    <include>objectmodel/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.nuiton.eugene</groupId>
+                <artifactId>maven-eugene-plugin</artifactId>
+
+                <executions>
+                
+                <execution>
+                        <phase>generate-sources</phase>
+                        <!-- By default, generation from ObjectModel -->
+                        <configuration>
+                            <!--<inputs>zargo</inputs>-->
+                            <!-- Corresponding to extracted package from zargo file -->
+                            <fullPackagePath>org.kootox.episodesmanager.entities</fullPackagePath>
+                            <!-- DefaultPackage used for DAOHelper generation -->
+                            <defaultPackage>org.kootox.episodesmanager.entities</defaultPackage>
+                            <templates>
+                                org.nuiton.topia.generator.TopiaMetaTransformer,
+                                org.nuiton.topia.generator.EntityTransformer
+                            </templates>
+                        </configuration>
+                        <goals>
+                            <goal>smart-generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.nuiton.i18n</groupId>
+                <artifactId>maven-i18n-plugin</artifactId>
+                <configuration>
+                    <entries>
+                        <entry>
+                            <basedir>${maven.gen.dir}/java/</basedir>
+                            <includes>
+                                <param>**\/**Abstract.java</param>
+                            </includes>
+                        </entry>
+                    </entries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>parserJava</goal>
+                            <goal>gen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

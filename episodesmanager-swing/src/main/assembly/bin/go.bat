@@ -1,0 +1,1 @@
+java  -Xmx512M -Xms512M -jar ${project.build.finalName}.jar %1 %2 %3 %4 %5 %6 %7 %8 %9

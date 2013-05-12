@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ************************************************************* -->
+    <!-- *** POM Relationships *************************************** -->
+    <!-- ************************************************************* -->
+
+    <parent>
+        <groupId>org.nuiton</groupId>
+        <artifactId>mavenpom4redmine</artifactId>
+        <version>3.4.8</version>
+    </parent>
+    
+
+    <groupId>org.kootox</groupId>
+    <artifactId>episodesmanager</artifactId>
+    <version>0.4.0-SNAPSHOT</version>
+
+    <modules>
+        <module>episodesmanager-entities</module>
+        <module>episodesmanager-services</module>
+        <module>episodesmanager-swing</module>
+        <!--module>episodesmanager-android</module-->
+        <module>episodesmanager-web</module>
+    </modules>
+
+    <!-- ************************************************************* -->
+    <!-- *** Project Information ************************************* -->
+    <!-- ************************************************************* -->
+
+    <name>Episodes Manager</name>
+
+    <description>Software to manage your TV-shows episodes.</description>
+    <inceptionYear>2009</inceptionYear>
+
+    <organization>
+        <name>Jean Couteau</name>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>jcouteau</id>
+            <name>Jean Couteau</name>
+            <email>couteau@codelutin.com</email>
+            <organization>Code Lutin</organization>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+2</timezone>
+        </developer>
+
+       <developer>
+        <name>Tony Chemit</name>
+        <id>tchemit</id>
+        <email>chemit@codelutin.com</email>
+        <organization>Code Lutin</organization>
+        <timezone>+2</timezone>
+        <roles>
+          <role>Developer</role>
+        </roles>
+      </developer>
+    </developers>
+
+    
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Settings ****************************************** -->
+    <!-- ************************************************************* -->
+    <packaging>pom</packaging>
+
+    <properties>
+
+        <projectId>Episodes Manager</projectId>
+
+        <!-- labs -->
+                
+        <i18n.bundles>fr_FR,en_GB</i18n.bundles>
+        
+        <!-- libraries version -->
+        <jaxxVersion>2.5.14</jaxxVersion>
+        <topiaVersion>2.7.1</topiaVersion>
+        <nuitonUtilsVersion>2.6.11</nuitonUtilsVersion>
+        <eugeneVersion>2.6.1</eugeneVersion>
+        <nuitonI18nVersion>2.5</nuitonI18nVersion>
+        <nuitonJsVersion>0.1-SNAPSHOT</nuitonJsVersion>
+        <maven.jar.main.class>org.kootox.episodesmanager.EpisodesManagerRunner</maven.jar.main.class>
+        <maven.gen.dir>${project.build.directory}/generated-sources</maven.gen.dir>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+                <version>4.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+
+            <!-- librairie nuiton-utils-->
+            <dependency>
+                <groupId>org.nuiton</groupId>
+                <artifactId>nuiton-utils</artifactId>
+                <version>${nuitonUtilsVersion}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-compress</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- librairie Jaxx -->
+            <dependency>
+                <groupId>org.nuiton.jaxx</groupId>
+                <artifactId>jaxx-runtime</artifactId>
+                <version>${jaxxVersion}</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.help</groupId>
+                        <artifactId>javahelp</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.nuiton.jaxx</groupId>
+                <artifactId>jaxx-widgets</artifactId>
+                <version>${jaxxVersion}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.nuiton.jaxx</groupId>
+                <artifactId>jaxx-runtime</artifactId>
+                <version>${jaxxVersion}</version>
+                <scope>test</scope>
+                <classifier>tests</classifier>
+            </dependency>
+
+            <!-- librairie topia -->
+            <dependency>
+                <groupId>org.nuiton.topia</groupId>
+                <artifactId>topia-persistence</artifactId>
+                <version>${topiaVersion}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.nuiton.topia</groupId>
+                <artifactId>topia-service-migration</artifactId>
+                <version>${topiaVersion}</version>
+                <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.nuiton.js</groupId>
+                <artifactId>nuiton-js-wro</artifactId>
+                <version>${nuitonJsVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.nuiton.js</groupId>
+                <artifactId>nuiton-js-jquery</artifactId>
+                <version>1.8.3-1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.nuiton.js</groupId>
+                <artifactId>nuiton-js-jquery-ui</artifactId>
+                <version>1.9.2-1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.nuiton.js</groupId>
+                <artifactId>nuiton-js-jqplot</artifactId>
+                <version>1.0.4r1121-1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.nuiton.js</groupId>
+                <artifactId>nuiton-js-bootstrap</artifactId>
+                <version>2.2.2-1-SNAPSHOT</version>
+            </dependency>
+                        
+            <!-- librairie pour traiter les fichiers csv -->
+            <dependency>
+                <groupId>net.sf.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>1.8</version>
+                <scope>compile</scope>
+            </dependency>
+            
+            <!-- base h2 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.3.168</version>
+            </dependency>
+
+            <!--dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+            </dependency-->
+
+            <dependency>
+                <groupId>jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>1.0</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.5.10</version>
+                <scope>compile</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.5.10</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>xpp3</groupId>
+                <artifactId>xpp3</artifactId>
+                <version>1.1.4c</version>
+            </dependency>
+
+
+          <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>10.0</version>
+          </dependency>
+
+		  <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.8.5</version>
+            <scope>test</scope>
+          </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+      
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.nuiton.i18n</groupId>
+                    <artifactId>maven-i18n-plugin</artifactId>
+                    <version>${nuitonI18nVersion}</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.nuiton.eugene</groupId>
+                    <artifactId>maven-eugene-plugin</artifactId>
+                    <version>${eugeneVersion}</version>
+                    <configuration>
+                        <inputs>zargo</inputs>
+                        <resolver>org.nuiton.util.FasterCachedResourceResolver</resolver>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.nuiton.topia</groupId>
+                            <artifactId>topia-persistence</artifactId>
+                            <version>${topiaVersion}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                
+                <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>maven-android-plugin</artifactId>
+                <version>2.8.4</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <configuration>
+                        <generateBundle>true</generateBundle>
+                        <licenseName>gpl_v3</licenseName>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <inherited>true</inherited>
+
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>${maven.jar.main.class}</mainClass>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                            <manifestEntries>
+                                <url>${project.url}</url>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.2.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+    </build>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Environment  ************************************** -->
+    <!-- ************************************************************* -->
+
+    <scm>
+        <connection>scm:svn:http://dev.zoumbox.org/svn-episodesmanager/trunk</connection>
+        <developerConnection>scm:svn:http://dev.zoumbox.org/svn-episodesmanager/trunk</developerConnection>
+        <url>http://dev.zoumbox.org/svn-episodesmanager/trunk</url>
+    </scm>
+    
+    
+
+    <repositories>
+
+        <!-- depot des releases nuiton -->
+
+        <repository>
+            <id>nuiton.release</id>
+            <name>NuitonReleaseRepository</name>
+            <url>http://maven.nuiton.org/release</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        
+        <repository>
+            <id>webmotion.release</id>
+            <name>WebmotionReleaseRepository</name>
+            <url>http://debux.org/maven/repo</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+        
+        
+
+        <!-- depot des snapshots nuiton -->
+
+        <repository>
+            <id>nuiton.snapshot</id>
+            <name>NuitonSnapshotRepository</name>
+            <url>http://maven.nuiton.org/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+    </repositories>
+
+    <pluginRepositories>
+
+        <!-- depot des releases nuiton -->
+
+        <pluginRepository>
+
+            <id>nuiton.release</id>
+            <name>NuitonReleaseRepository</name>
+            <url>http://maven.nuiton.org/nexus/content/repositories/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </pluginRepository>
+
+        <!-- depot des snapshots nuiton -->
+
+        <pluginRepository>
+            <id>nuiton.snapshot</id>
+            <name>NuitonSnapshotRepository</name>
+            <url>http://maven.nuiton.org/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+
+    </pluginRepositories>
+    
+</project>

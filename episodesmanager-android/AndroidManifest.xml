@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.kootox.episodesmanager.android"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <application android:label="@string/app_name">
+        <activity android:name=".MainScreen"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".AddShow"/>
+        <activity android:name=".screen.AllShows"/>
+        <activity android:name=".screen.AllSeasons"/>
+
+        <!--service android:name=".TVRageAPI"/-->
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest> 

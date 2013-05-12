@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ************************************************************* -->
+    <!-- *** POM Relationships *************************************** -->
+    <!-- ************************************************************* -->
+
+    <parent>
+        <groupId>org.kootox</groupId>
+        <artifactId>episodesmanager</artifactId>
+        <version>0.3.2-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.kootox.episodesmanager</groupId>
+    <artifactId>episodesmanager-web</artifactId>
+
+    <dependencies>
+
+        <!-- sibling dependencies -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>episodesmanager-entities</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>episodesmanager-services</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.debux.webmotion</groupId>
+            <artifactId>webmotion</artifactId>
+            <version>2.2</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.debux.webmotion</groupId>
+            <artifactId>webmotion-extras</artifactId>
+            <version>2.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.nuiton.js</groupId>
+            <artifactId>nuiton-js-wro</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nuiton.js</groupId>
+            <artifactId>nuiton-js-jquery</artifactId>
+            <version>1.8.3-1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nuiton.js</groupId>
+            <artifactId>nuiton-js-jquery-ui</artifactId>
+            <version>1.9.2-1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nuiton.js</groupId>
+            <artifactId>nuiton-js-jqplot</artifactId>
+            <version>1.0.4r1121-1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nuiton.js</groupId>
+            <artifactId>nuiton-js-bootstrap</artifactId>
+            <version>2.2.2-1-SNAPSHOT</version>
+        </dependency>
+        
+        <!--dependency>
+            <groupId>com.efsavage</groupId>
+            <artifactId>twitter-bootstrap</artifactId>
+            <version>2.0.3</version>
+        </dependency-->
+
+    </dependencies>
+
+    <!-- ************************************************************* -->
+    <!-- *** Project Information ************************************* -->
+    <!-- ************************************************************* -->
+
+    <name>${project.artifactId}</name>
+    <description>Episodes Manager Web User Interface</description>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Settings ****************************************** -->
+    <!-- ************************************************************* -->
+    <properties>
+        
+    </properties>
+
+    <packaging>war</packaging>
+
+    <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+
+                <configuration>
+                    <generateBundle>true</generateBundle>
+                    <licenseName>gpl_v3</licenseName>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>attach-licenses</id>
+                        <goals>
+                            <goal>update-project-license</goal>
+                            <goal>add-third-party</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!--descriptors>
+                        <descriptor>src/main/assembly/bin.xml</descriptor>
+                    </descriptors-->
+                    <archive>
+                        <manifest>
+                            <mainClass>${maven.jar.main.class}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-assemblies</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+         
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.0.RC2</version>
+                <configuration>
+                    <!--contextXml>${basedir}/src/main/resources/jetty-context.xml</contextXml-->
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/episodesManager</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
+    
+    <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.0-beta-1</version>
+        </plugin>
+
+        </plugins>
+        
+        <!--finalName>episodesmanager</finalName-->
+    </build>
+
+    <!-- ************************************************************* -->
+    <!-- *** Build Environment  ************************************** -->
+    <!-- ************************************************************* -->
+
+</project>

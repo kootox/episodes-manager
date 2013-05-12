@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:stretchColumns="0">
+    <TableRow>
+        
+        <!-- Show name -->
+        <TextView android:id="@+id/show"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"/>
+
+        <!-- Acquire show -->
+        <CheckBox android:id="@+id/acquireShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:gravity="right"
+        android:focusable="false"/>
+
+        <!-- Watch show -->
+        <CheckBox android:id="@+id/watchShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:gravity="right"
+        android:focusable="false"/>
+        <!--android:clickable="false"/-->
+
+    </TableRow>
+
+</TableLayout>

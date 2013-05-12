@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  episodesmanager-entities
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field" auto-import="true" package="org.kootox.episodesmanager.entities">
+    <class name="org.kootox.episodesmanager.entities.SeasonImpl" table="season" node="org.kootox.episodesmanager.entities.SeasonImpl" abstract="false" proxy="org.kootox.episodesmanager.entities.Season" >
+        <id name="topiaId" type="string" length="255" node="@topiaId"/>
+        <version name="topiaVersion" type="long" node="@topiaVersion"/>
+        <property name="topiaCreateDate" type="timestamp" node="@topiaCreateDate"/>
+        <property name="number" type="int" access="field" column="number" node="number"/>
+        <many-to-one name="show" class="org.kootox.episodesmanager.entities.ShowImpl" column="show"  node="show/@topiaId" embed-xml="false"/>
+        <bag name="episode" inverse="true" lazy="true" cascade="all,delete-orphan" node="episode" embed-xml="false">
+            <key column="season"/>
+            <one-to-many class="org.kootox.episodesmanager.entities.EpisodeImpl" node="topiaId" embed-xml="false"/>
+        </bag>
+    </class>
+</hibernate-mapping>

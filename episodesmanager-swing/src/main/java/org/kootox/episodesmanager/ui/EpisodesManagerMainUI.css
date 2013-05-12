@@ -1,0 +1,207 @@
+/*
+ * #%L
+ * episodesmanager-swing
+ * 
+ * $Id$
+ * $HeadURL$
+ * %%
+ * Copyright (C) 2009 - 2010 Jean Couteau
+ * %%
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the 
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public 
+ * License along with this program.  If not, see
+ * <http://www.gnu.org/licenses/gpl-3.0.html>.
+ * #L%
+ */
+JToolBar {
+    borderPainted:false;
+    floatable:false;
+    opaque:false;
+}
+
+JSplitPane {
+    oneTouchExpandable:true;
+    continuousLayout:true;
+    dividerSize:6;
+}
+
+#mainFrame {    
+    title :"episodesmanager.title.welcome";
+    defaultCloseOperation:"do_nothing_on_close";
+    /*iconImage:{createImageIcon("logo-OT_web.png").getImage()};*/
+}
+
+#menu {
+    _help:{"ui.main.menu"};
+}
+
+#menuFile {
+    text:"episodesmanager.menu.file";
+    mnemonic:F;
+    _help:{"ui.main.menu.file"};
+}
+
+#menuFileConfiguration {
+    text:"episodesmanager.action.configuration";
+    toolTipText:"episodesmanager.action.configuration.tip";
+    actionIcon:"config";
+    mnemonic:C;
+    _help:{"ui.main.menu.file.configuration"};
+}
+
+#menuFileLanguage {
+    text:"episodesmanager.menu.file.locale";
+    toolTipText:"episodesmanager.menu.file.locale";
+    actionIcon:"translate";
+    mnemonic:C;
+    _help:{"ui.main.menu.file.locale"};
+}
+
+
+#menuFileLanguageFR {
+    text:"episodesmanager.action.locale.fr";
+    toolTipText:"episodesmanager.action.locale.fr.tip";
+    actionIcon:"i18n-fr";
+    enabled:{!acceptLocale(getConfig().getLocale(), "fr_FR")};
+    mnemonic:F;
+    _help:{"ui.main.menu.file.locale.fr"};
+}
+
+#menuFileLanguageUK {
+    text:"episodesmanager.action.locale.uk";
+    toolTipText:"episodesmanager.action.locale.uk.tip";
+    actionIcon:"i18n-uk";
+    enabled:{!acceptLocale(getConfig().getLocale(), "en_GB")};
+    mnemonic:U;
+    _help:{"ui.main.menu.file.locale.uk"};
+}
+
+#menuFileFullscreen {
+    text:"episodesmanager.action.fullscreen";
+    toolTipText:"episodesmanager.action.fullscreen.tip";
+    actionIcon:"fullscreen";
+    mnemonic:P;
+    visible:{!isUndecorated()};
+    _help:{"ui.main.menu.file.fullscreen"};
+}
+
+#menuFileNormalscreen {
+    text:"episodesmanager.action.normalscreen";
+    toolTipText:"episodesmanager.action.normalscreen.tip";
+    actionIcon:"leave-fullscreen";
+    mnemonic:N;
+    visible:{isUndecorated()};
+    _help:{"ui.main.menu.file.leave-fullscreen"};
+}
+
+#menuFileExit{
+    text:"episodesmanager.action.exit";
+    toolTipText:"episodesmanager.action.exit.tip";
+    actionIcon:"exit";
+    mnemonic:X;
+    _help:{"ui.main.menu.file.exit"};
+}
+
+#menuAdmin{
+    text:"episodesmanager.menu.admin";
+    _help:{"ui.main.menu.admin"};
+}
+
+#menuAdminSerie{
+    text:"episodesmanager.menu.admin.serie";
+    actionIcon:"admin-serie";
+    _help:{"ui.main.menu.admin.serie"};
+}
+
+#menuAdminSearchShow{
+    text:"episodesmanager.menu.admin.search.serie";
+    actionIcon:"admin-search-serie";
+    _help:{"ui.main.menu.admin.search.serie"};
+}
+
+#menuAdminShows{
+    text:"episodesmanager.menu.admin.shows";
+    actionIcon:"admin-shows";
+    _help:{"ui.main.menu.admin.shows"};
+}
+
+#menuAdminExportCSV {
+    text:"episodesmanager.menu.admin.exportCSV";
+    _help:{"ui.main.menu.admin.exportCSV"};
+}
+
+#menuAdminExportXML {
+    text:"episodesmanager.menu.admin.exportXML";
+    _help:{"ui.main.menu.admin.exportXML"};
+}
+
+#menuAdminImportCSV {
+    text:"episodesmanager.menu.admin.importCSV";
+    _help:{"ui.main.menu.admin.importCSV"};
+}
+
+#menuAdminImportXML {
+    text:"episodesmanager.menu.admin.importXML";
+    _help:{"ui.main.menu.admin.importXML"};
+}
+
+#menuAction{
+    text:"episodesmanager.menu.action";
+    _help:{"ui.main.menu.action"};
+}
+
+#menuActionTimeSpent {
+    text:"episodesmanager.menu.action.timeSpent";
+    _help:{"ui.main.menu.action.TimeSpent"};
+}
+
+#menuHelp{
+    text:"episodesmanager.menu.help";
+    mnemonic:e;
+    _help:{"ui.main.menu.help"};
+}
+
+#menuHelpHelp{
+    text:"episodesmanager.action.help";
+    toolTipText:"episodesmanager.action.help.tip";
+    actionIcon:"help";
+    mnemonic:e;
+    _help:{"ui.main.menu.help.help"};
+}
+
+#menuHelpSite{
+    text:"episodesmanager.action.site";
+    toolTipText:"episodesmanager.action.site.tip";
+    actionIcon:"site";
+    mnemonic:s;
+    _help:{"ui.main.menu.help.site"};
+}
+
+#menuHelpAbout{
+    text:"episodesmanager.action.about";
+    toolTipText:"episodesmanager.action.about.tip";
+    actionIcon:"about";
+    mnemonic:A;
+    _help:{"ui.main.menu.help.about"};
+}
+
+/* FIXME : ne fonctionne pas avec la statusMessagePanel...
+#status {
+    _help:{"ui.main.statusBar"};
+}*/
+
+#toolbar {
+    layout:{new BoxLayout(toolbar, 0)};
+    _help:{"ui.main.toolbar"};
+}
+
+

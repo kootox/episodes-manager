@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64px"
+   height="64px"
+   id="svg4002"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="systray.svg"
+   inkscape:export-filename="/home/couteau/workspace/perso/episodesmanager/trunk/episodesmanager-swing/src/main/resources/org/kootox/episodesmanager/ui/systray/systray.png"
+   inkscape:export-xdpi="28.125"
+   inkscape:export-ydpi="28.125">
+  <defs
+     id="defs4004">
+    <linearGradient
+       id="linearGradient4536">
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="0"
+         id="stop4538" />
+      <stop
+         style="stop-color:#00005d;stop-opacity:1;"
+         offset="1"
+         id="stop4540" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 32 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="64 : 32 : 1"
+       inkscape:persp3d-origin="32 : 21.333333 : 1"
+       id="perspective4010" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4536"
+       id="linearGradient4542"
+       x1="10.251778"
+       y1="26.877896"
+       x2="54.324875"
+       y2="26.877896"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.7781746"
+     inkscape:cx="42.973618"
+     inkscape:cy="33.122005"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:document-units="px"
+     inkscape:grid-bbox="true"
+     inkscape:window-width="915"
+     inkscape:window-height="729"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata4007">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer">
+    <rect
+       style="fill:#4d4d4d;stroke:none"
+       id="rect4012"
+       width="57.454536"
+       height="55.272724"
+       x="3.6363637"
+       y="3.6363635"
+       ry="7.2727275" />
+    <rect
+       style="fill:url(#linearGradient4542);stroke:none;fill-opacity:1"
+       id="rect4014"
+       width="44.073097"
+       height="34.706783"
+       x="10.251778"
+       y="9.5245047"
+       ry="7.2727275"
+       rx="11.818182" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#1a1a1a;stroke:none"
+       id="path4016"
+       sodipodi:cx="12.545455"
+       sodipodi:cy="52.636364"
+       sodipodi:rx="3.3020301"
+       sodipodi:ry="1.9090909"
+       d="m 15.847485,52.636364 a 3.3020301,1.9090909 0 1 1 -6.6040601,0 3.3020301,1.9090909 0 1 1 6.6040601,0 z"
+       transform="translate(1.7356257,-1.0928014)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#1a1a1a;stroke:none"
+       id="path4018"
+       sodipodi:cx="43.636364"
+       sodipodi:cy="53.545456"
+       sodipodi:rx="1.6363636"
+       sodipodi:ry="1.5454545"
+       d="m 45.272728,53.545456 a 1.6363636,1.5454545 0 1 1 -3.272728,0 1.6363636,1.5454545 0 1 1 3.272728,0 z"
+       transform="translate(1.1974157,-1.7999064)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#1a1a1a;stroke:none"
+       id="path4020"
+       sodipodi:cx="52.090908"
+       sodipodi:cy="54.545456"
+       sodipodi:rx="1.7272727"
+       sodipodi:ry="1.6363636"
+       d="m 53.818181,54.545456 a 1.7272727,1.6363636 0 1 1 -3.454546,0 1.7272727,1.6363636 0 1 1 3.454546,0 z"
+       transform="translate(-1.4233503,-2.8908153)" />
+  </g>
+</svg>

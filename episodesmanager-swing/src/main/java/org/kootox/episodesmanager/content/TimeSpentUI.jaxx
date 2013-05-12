@@ -1,0 +1,89 @@
+<!--
+  #%L
+  episodesmanager-swing
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+<JFrame id='timeSpent' layout='{new BorderLayout()}'>
+
+    <!--style source='EpisodeListUI.css'/-->
+
+    <!-- le modèle du tableau -->
+    <TimeSpentTableModel id='timeSpentTableModel'
+                            javaBean='getHandler().getTimeSpentTableModel()'/>
+
+    <script><![CDATA[
+import org.kootox.episodesmanager.ui.*;
+import org.kootox.episodesmanager.ui.common.renderer.ButtonRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.CenteredLabelRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.DateRenderer;
+import org.kootox.episodesmanager.ui.common.renderer.ColumnHeaderRenderer;
+import org.kootox.episodesmanager.ui.common.editor.ButtonEditor;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableModel;
+import java.awt.image.ImageObserver;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public TimeSpentHandler getHandler() {
+    return getContextValue(TimeSpentHandler.class);
+}
+
+protected EpisodesManagerContext getEpisodesManagerContext() {
+    return EpisodesManagerContext.get();
+}
+
+void $afterCompleteSetup() {
+    /*episodeslistTable.getColumn(_("episodesmanager.episode.actions")).setCellRenderer(new ButtonRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.actions")).setCellEditor(new ButtonEditor(new JCheckBox()));
+    episodeslistTable.getColumn(_("episodesmanager.episode.number")).setCellRenderer(new CenteredLabelRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.airingDate")).setCellRenderer(new DateRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.title")).setCellRenderer(new CenteredLabelRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.serie")).setCellRenderer(new CenteredLabelRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.title")).setHeaderRenderer(new ColumnHeaderRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.airingDate")).setHeaderRenderer(new ColumnHeaderRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.number")).setHeaderRenderer(new ColumnHeaderRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.actions")).setHeaderRenderer(new ColumnHeaderRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.serie")).setHeaderRenderer(new ColumnHeaderRenderer());
+    episodeslistTable.getColumn(_("episodesmanager.episode.status")).setHeaderRenderer(new ColumnHeaderRenderer());*/
+
+    timeSpent.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent we) {
+            EpisodesManagerContext.TIMESPENT_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),false);
+        }
+
+        public void windowOpened(WindowEvent we) {
+            EpisodesManagerContext.TIMESPENT_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),true);
+        }
+    });
+}
+
+
+]]>
+    </script>
+    <JScrollPane constraints='BorderLayout.CENTER'>
+        <JTable id='timeSpentTable'
+                model='{timeSpentTableModel}'
+                autoResizeMode='2'/>
+    </JScrollPane>
+</JFrame>

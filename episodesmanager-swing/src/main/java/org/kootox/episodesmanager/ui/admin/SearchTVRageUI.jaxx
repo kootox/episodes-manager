@@ -1,0 +1,94 @@
+<!--
+  #%L
+  episodesmanager-swing
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+<JDialog id='searchTVRageUI'
+         title='episodesmanager.search.title'
+         modal='true'
+         layout='{new BorderLayout()}'
+         defaultCloseOperation='{JDialog.HIDE_ON_CLOSE}'>
+
+    <style source='../EpisodesManagerMainUI.css'/>
+
+    <script><![CDATA[
+import jaxx.runtime.JAXXContext;
+import org.kootox.episodesmanager.ui.EpisodesManagerMainUIHandler;
+import java.awt.GridBagLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public SearchTVRageUI(JAXXContext parentContext, Window parent) {
+    super(parent);
+    SwingUtil.initContext(this, parentContext);
+}
+
+EpisodesManagerMainUIHandler getHandler() {
+    return getContextValue(EpisodesManagerMainUIHandler.class);
+}
+
+public void search() {
+    setVisible(false);
+    EpisodesManagerContext.SEARCHUI_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),false);
+    getHandler().searchResults(search.getText());
+}
+
+void $afterCompleteSetup() {
+    searchTVRageUI.addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent we) {
+            EpisodesManagerContext.SEARCHUI_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),false);
+        }
+
+        public void windowOpened(WindowEvent we) {
+            EpisodesManagerContext.SEARCHUI_VISIBLE.
+                    setContextValue(EpisodesManagerContext.get(),true);
+        }
+    });
+    setLocationRelativeTo(null);
+
+    //Submit on enter
+    search.addKeyListener(new KeyAdapter() {
+        public void keyPressed(KeyEvent k) {
+            if(k.getKeyChar() == KeyEvent.VK_ENTER) {
+                searchButton.doClick();
+            }
+        }
+    });
+
+}
+]]>
+    </script>
+
+    <JPanel id='searchPanel' layout='{new GridBagLayout()}'>
+
+        <JLabel text='episodesmanager.admin.search.tvrage'/>
+
+        <JTextField id='search' text=''/>
+
+        <JButton id='searchButton'
+                 actionIcon='search'
+                 text='episodesmanager.common.search'
+                 onActionPerformed='search()'/>
+    </JPanel>
+</JDialog>

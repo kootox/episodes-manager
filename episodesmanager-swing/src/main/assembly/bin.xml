@@ -1,0 +1,53 @@
+<assembly>
+    <id>bin</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>${project.build.finalName}.jar</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>target/classes</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>THIRD-PARTY.txt</include>
+            </includes>
+        </fileSet>
+        <!--fileSet>
+            <directory>target/apidocs</directory>
+            <outputDirectory>/apidocs</outputDirectory>
+        </fileSet-->
+        <fileSet>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>README*</include>
+                <include>LICENSE*</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/assembly/bin</directory>
+            <outputDirectory>/</outputDirectory>
+            <fileMode>0755</fileMode>
+            <filtered>true</filtered>
+            <includes>
+                <include>go.sh</include>
+                <include>go.bat</include>
+            </includes>
+        </fileSet>
+
+    </fileSets>
+</assembly>

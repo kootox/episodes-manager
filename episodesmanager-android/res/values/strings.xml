@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EpisodesManager</string>
+
+    <!-- Search dialog -->
+    <string name="searchTitle">Rechercher sur TVRage</string>
+    <string name="searchText">Série : </string>
+    <string name="searchButton">Rechercher</string>
+
+    <!-- Menus -->
+    <string name="menuUpdate">Update</string>
+    <string name="menuAdd">Add</string>
+    <string name="menuQuit">Quit</string>
+    <string name="menuAcquire">Acquire</string>
+    <string name="menuWatch">Watch</string>
+    <string name="menuBroadcast">Broadcast</string>
+    <string name="menuBulk">Bulk</string>
+
+    <!-- dialog_add -->
+    <string name="chooseShow">Choisissez la série</string>
+
+    <!-- Miscellanious -->
+    <string name="loading">Loading. Please wait...</string>
+    <string name="no_shows">No shows</string>
+    <string name="noEpisodesToAcquire">No episodes to acquire</string>
+    <string name="noEpisodesToWatch">No episodes to watch</string>
+    <string name="separator"> - </string>
+    <string name="epSeparator">x</string>
+    <string name="blankSpace">    </string>
+</resources>

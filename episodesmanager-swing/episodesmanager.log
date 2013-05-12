@@ -1,0 +1,46 @@
+ INFO [main] (EpisodesManagerRunner.java:71) main - Episodes Manager launched at Sun Sep 16 11:32:39 CEST 2012 args: []
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:100) onInit - episodesmanager.runner.init
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:108) onInit - episodesmanager.runner.config.loaded
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:194) initI18n - language : fr_FR
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:114) onInit - episodesmanager.runner.i18n.loaded
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:124) onInit - Will use context :org.kootox.episodesmanager.EpisodesManagerContext@62610b
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:128) onInit - episodesmanager.runner.context.loaded
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:134) onStart - episodesmanager.runner.start
+ INFO [EpisodesManagerRunner] (EpisodesManagerMainUIHandler.java:138) initUI - init tray icon
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [EpisodesManagerRunner] (EpisodesManagerRunner.java:140) onStart - episodesmanager.runner.ui.loaded
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [Timer-0] (EpisodesManagerMainUIHandler.java:528) run - Update shows task
+ INFO [Timer-0] (TheTvDbService.java:145) updateMirrorsList - Update mirrors list
+ INFO [AWT-EventQueue-0] (EpisodesManagerMainUIHandler.java:184) close - Episodes Manager quitting...
+ INFO [ShutDown EpisodesManagerRunner] (EpisodesManagerRunner.java:157) onShutdown - EpisodesManager shutdown at Sun Sep 16 14:13:31 CEST 2012

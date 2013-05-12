@@ -1,0 +1,36 @@
+/* styles for layout */
+
+
+
+html,body {
+    height:100%;
+}
+
+#main{
+    margin-top:60px;
+}
+
+dt, dd{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.enum-left{
+    width:160px;
+    text-align:right;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.enum-right{
+    margin-left:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    float:left;
+}
+
+.link{
+    cursor:pointer;
+}

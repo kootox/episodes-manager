@@ -1,0 +1,131 @@
+<!--
+  #%L
+  episodesmanager-swing
+  
+  $Id$
+  $HeadURL$
+  %%
+  Copyright (C) 2009 - 2010 Jean Couteau
+  %%
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as
+  published by the Free Software Foundation, either version 3 of the 
+  License, or (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public 
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/gpl-3.0.html>.
+  #L%
+  -->
+<JFrame id='mainFrame'
+        decorator='help'
+        width='800'
+        height='600'
+        undecorated='{getConfig().isFullScreen()}'
+        onWindowClosing='getHandler().close(mainFrame)'>
+
+    <style source='EpisodesManagerMainUI.css'/>
+
+    <script><![CDATA[
+import java.util.Locale;
+
+public org.kootox.episodesmanager.EpisodesManagerConfig getConfig() {
+    return EpisodesManagerContext.getConfig();
+}
+
+protected EpisodesManagerMainUIHandler getHandler() {
+    EpisodesManagerMainUIHandler handler = getContextValue(EpisodesManagerMainUIHandler.class);
+    if (handler == null) {
+        handler = new EpisodesManagerMainUIHandler();
+        setContextValue(handler);
+    }
+    return handler;
+}
+
+protected EpisodesManagerContext getEpisodesManagerContext() {
+    return EpisodesManagerContext.get();
+}
+
+public boolean acceptLocale(Locale l, String expected) {
+  return l !=null && l.toString().equals(expected);
+}
+
+public void close(){
+    getHandler().close(this);
+}
+
+void $afterCompleteSetup() {
+    getHandler().update();
+    getHandler().createSystray();
+    setLocationRelativeTo(null);
+}
+]]>
+    </script>
+
+    <!-- menu -->
+    <JMenuBar id='menu'>
+
+        <JMenu id='menuFile'>
+            <JMenuItem id='menuFileConfiguration'
+                       onActionPerformed="getHandler().showConfig()"/>
+            <JMenu id='menuFileLanguage'>
+                <JMenuItem id='menuFileLanguageFR' onActionPerformed="getHandler().changeLanguage(Locale.FRANCE)"/>
+                <JMenuItem id='menuFileLanguageUK' onActionPerformed="getHandler().changeLanguage(Locale.UK)"/>
+            
+            </JMenu>
+            <JSeparator/>
+            <JMenuItem id='menuFileFullscreen'
+                       onActionPerformed="getHandler().changeScreen(this, true)"/>
+            <JMenuItem id='menuFileNormalscreen'
+                       onActionPerformed="getHandler().changeScreen(this, false)"/>
+            <JSeparator/>
+            <JMenuItem id='menuFileExit'
+                       onActionPerformed="getHandler().close(mainFrame)"/>
+        </JMenu>
+
+        <JMenu id='menuAdmin'>
+            <!--JMenuItem id='menuAdminSerie'
+                       onActionPerformed="getHandler().showAdminSerie(this)"/-->
+            <JMenuItem id='menuAdminSearchShow'
+                       onActionPerformed="getHandler().search()"/>
+            <JMenuItem id='menuAdminShows'
+                       onActionPerformed="getHandler().showAdminShows()"/>
+            <JMenuItem id="menuAdminExportCSV"
+                       onActionPerformed="getHandler().exportCSV(this)"/>
+            <JMenuItem id="menuAdminExportXML"
+                       onActionPerformed="getHandler().exportXML(this)"/>
+            <JMenuItem id="menuAdminImportCSV"
+                       onActionPerformed="getHandler().importCSV(this)"/>
+            <JMenuItem id="menuAdminImportXML"
+                       onActionPerformed="getHandler().importXML(this)"/>
+        </JMenu>
+
+        <JMenu id='menuAction'>
+            <JMenuItem id='menuActionTimeSpent'
+                       onActionPerformed="getHandler().showTimeSpent()"/>
+        </JMenu>
+
+        <JMenu id='menuHelp'>
+            <JMenuItem id='menuHelpHelp'/>
+            <JMenuItem id='menuHelpSite'
+                       onActionPerformed="getHandler().gotoSite()"/>
+            <JMenuItem id='menuHelpAbout'
+                       onActionPerformed="getHandler().showAbout(this)"/>
+        </JMenu>
+
+    </JMenuBar>
+
+    <!-- contenu principal -->
+
+    <JPanel id="content"/>
+
+    <!-- status message bar -->
+    <!--jaxx.runtime.swing.StatusMessagePanel id='status'
+                                           _help='"ui.main.statusBar"'
+                                           constraints="BorderLayout.SOUTH"/-->
+</JFrame>

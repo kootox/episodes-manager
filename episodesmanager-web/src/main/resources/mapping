@@ -1,0 +1,23 @@
+[config]
+package.base=org.kootox.episodesmanager
+package.views=WEB-INF/pages
+server.main.handler.class=org.debux.webmotion.sitemesh.SiteMeshMainHandler
+
+[filters]
+*           /*                          SiteMesh.decorate       layout=decorator.jsp
+
+[actions]
+*           /                           Index.index
+*           /index                      Index.index
+*           /ignore?id={id}             EpisodesOperations.ignore
+*           /acquire?id={id}            EpisodesOperations.acquire
+*           /watch?id={id}              EpisodesOperations.watch
+*           /episode?id={id}            EpisodesOperations.view
+*           /show?id={id}               ShowOperations.view
+*           /season/acquire?id={id}&v={v}     SeasonOperations.acquire
+*           /season/watch?id={id}&v={v}     SeasonOperations.watch
+*           /season?id={id}             SeasonOperations.view
+*           /add/search                 AddOperations.search
+*           /add/searchShow?q={query}       AddOperations.searchShow
+*           /add/show?id={id}           AddOperations.addShow
+*           /timeSpent                  MiscAction.timeSpent
