@@ -34,3 +34,9 @@ dt, dd{
 .link{
     cursor:pointer;
 }
+
+.dl-horizontal dt
+{
+    white-space: normal;
+    width: 200px;
+}
