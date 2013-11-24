@@ -17,7 +17,6 @@
  */
 package org.kootox.episodesmanager.services.databases;
 
-import junit.framework.Assert;
 import org.junit.Before;
 import org.kootox.episodesmanager.entities.Episode;
 import org.kootox.episodesmanager.entities.Season;
@@ -140,10 +139,10 @@ public class TestTheTvDbService extends AbstractEpisodesManagerServiceTest {
         Show show = showService.getShowByName("Buffy contre les vampires");
 
         assertEquals("The WB", show.getNetwork());
-        assertEquals(new Integer(60), show.getRuntime());
+        assertEquals(new Integer(40), show.getRuntime());
         assertTrue(show.getOver());
         assertEquals("TV-PG", show.getContentRating());
-        Assert.assertNotNull("Summary should not be null", show.getSummary());
+        assertNotNull("Summary should not be null", show.getSummary());
         assertTrue(show.getActors().contains("Sarah Michelle Gellar"));
         assertTrue(show.getGenres().contains("Fantasy"));
         assertEquals("tt0118276", show.getImdbId());
@@ -193,10 +192,10 @@ public class TestTheTvDbService extends AbstractEpisodesManagerServiceTest {
         Show testedShow = showService.getShowByName("Buffy contre les vampires");
 
         assertEquals("The WB", testedShow.getNetwork());
-        assertEquals(new Integer(60), testedShow.getRuntime());
+        assertEquals(new Integer(40), testedShow.getRuntime());
         assertTrue(testedShow.getOver());
         assertEquals("TV-PG", testedShow.getContentRating());
-        Assert.assertNotNull("Summary should not be null", testedShow.getSummary());
+        assertNotNull("Summary should not be null", testedShow.getSummary());
         assertTrue(testedShow.getActors().contains("Sarah Michelle Gellar"));
         assertTrue(testedShow.getGenres().contains("Fantasy"));
         assertEquals("tt0118276", testedShow.getImdbId());

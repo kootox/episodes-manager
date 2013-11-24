@@ -2,14 +2,14 @@ package org.kootox.episodesmanager;
 
 import java.io.File;
 import java.util.Locale;
-import org.nuiton.util.ApplicationConfig;
+import org.nuiton.config.ConfigOptionDef;
 
 import static org.nuiton.i18n.I18n._;
 
 /**
  * @author jcouteau <couteau@codelutin.com>
  */
-public enum EpisodesManagerConfigOption implements ApplicationConfig.OptionDef {
+public enum EpisodesManagerConfigOption implements ConfigOptionDef {
 
     CONFIG_FILE(
             "episodesManager.config.file",

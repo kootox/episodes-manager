@@ -31,6 +31,12 @@
             <groupId>org.nuiton.topia</groupId>
             <artifactId>topia-service-migration</artifactId>
         </dependency>
+
+        <!-- config -->
+        <dependency>
+            <groupId>org.nuiton</groupId>
+            <artifactId>nuiton-config</artifactId>
+        </dependency>
         
         <!-- opencsv dependencies -->
 

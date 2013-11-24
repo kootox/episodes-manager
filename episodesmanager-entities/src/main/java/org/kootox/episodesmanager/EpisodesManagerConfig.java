@@ -27,13 +27,13 @@ package org.kootox.episodesmanager;
 import java.util.Properties;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.kootox.episodesmanager.exceptions.EpisodesManagerTechnicalException;
-import org.nuiton.util.ApplicationConfig;
 import java.util.Locale;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.nuiton.config.ApplicationConfig;
+import org.nuiton.config.ArgumentsParserException;
 
 import java.io.File;
-import org.nuiton.util.ArgumentsParserException;
 
 import static org.kootox.episodesmanager.EpisodesManagerConfigOption.*;
 
@@ -52,7 +52,7 @@ public class EpisodesManagerConfig {
 
     public EpisodesManagerConfig() {
         applicationConfig = new ApplicationConfig("episodes-manager.properties");
-        applicationConfig.loadDefaultOptions(EpisodesManagerConfigOption.class);
+        applicationConfig.loadDefaultOptions(EpisodesManagerConfigOption.values());
         try {
             applicationConfig.parse();
         } catch (ArgumentsParserException e) {
