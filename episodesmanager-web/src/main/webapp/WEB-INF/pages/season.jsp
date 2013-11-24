@@ -13,7 +13,7 @@
     </head>
     <body id="container">
 
-        <div class="hero-unit">
+        <div>
 
             <h1>
                 <c:choose>
@@ -40,8 +40,8 @@
             <thead>
                 <tr>
                     <th>Épisode</th>
-                    <th>Possédé</th>
-                    <th>Vu</th>
+                    <th>Possédé - <a class="link all-acquired" topiaId="${season.topiaId}">Tout</a>/<a class="link none-acquired" topiaId="${season.topiaId}">Rien</a></th>
+                    <th>Vu - <a class="link all-seen" topiaId="${season.topiaId}">Tout</a>/<a class="link none-seen" topiaId="${season.topiaId}">Rien</a></th>
                 </tr>
             </thead>
             <tbody>
