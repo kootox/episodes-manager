@@ -21,7 +21,7 @@
     <modules>
         <module>episodesmanager-entities</module>
         <module>episodesmanager-services</module>
-        <module>episodesmanager-swing</module>
+        <!--module>episodesmanager-swing</module-->
         <!--module>episodesmanager-android</module-->
         <module>episodesmanager-web</module>
     </modules>
@@ -268,7 +268,7 @@
             <plugins>
                 <plugin>
                     <groupId>org.nuiton.i18n</groupId>
-                    <artifactId>maven-i18n-plugin</artifactId>
+                    <artifactId>i18n-maven-plugin</artifactId>
                     <version>${nuitonI18nVersion}</version>
                     <configuration>
                         <encoding>UTF-8</encoding>
@@ -277,7 +277,7 @@
                 
                 <plugin>
                     <groupId>org.nuiton.eugene</groupId>
-                    <artifactId>maven-eugene-plugin</artifactId>
+                    <artifactId>eugene-maven-plugin</artifactId>
                     <version>${eugeneVersion}</version>
                     <configuration>
                         <inputs>zargo</inputs>

@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.kootox</groupId>
         <artifactId>episodesmanager</artifactId>
-        <version>0.3.2-SNAPSHOT</version>
+        <version>0.4.0-SNAPSHOT</version>
     </parent>
 
     <groupId>org.kootox.episodesmanager</groupId>
@@ -59,27 +59,27 @@
         <dependency>
             <groupId>org.nuiton.js</groupId>
             <artifactId>nuiton-js-wro</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.nuiton.js</groupId>
             <artifactId>nuiton-js-jquery</artifactId>
-            <version>1.8.3-1-SNAPSHOT</version>
+            <version>1.8.3-1</version>
         </dependency>
         <dependency>
             <groupId>org.nuiton.js</groupId>
             <artifactId>nuiton-js-jquery-ui</artifactId>
-            <version>1.9.2-1-SNAPSHOT</version>
+            <version>1.9.2-1</version>
         </dependency>
         <dependency>
             <groupId>org.nuiton.js</groupId>
             <artifactId>nuiton-js-jqplot</artifactId>
-            <version>1.0.4r1121-1-SNAPSHOT</version>
+            <version>1.0.4r1121-1</version>
         </dependency>
         <dependency>
             <groupId>org.nuiton.js</groupId>
             <artifactId>nuiton-js-bootstrap</artifactId>
-            <version>2.2.2-1-SNAPSHOT</version>
+            <version>2.2.2-1</version>
         </dependency>
         
         <!--dependency>

@@ -9,7 +9,7 @@
     </head>
     <body id="container">
 
-    <div class="hero-unit">
+    <div>
 
         <h1>${show.title}</h1>
 
@@ -40,68 +40,66 @@
             </li>
 
             <li>
-                <div class="enum-left">Pays d'origine</div>
-                <div class="enum-right">${show.originCountry}</div>
+                <div class="enum-left">Chaîne</div>
+                <div class="enum-right">${show.network}</div>
+                <div style="clear:both;"></div>
+            </li>
+
+            <li>
+                <div class="enum-left">Première diffusion</div>
+                <div class="enum-right"><fmt:formatDate pattern="dd/MM/yyyy" value="${show.firstAired}"/></div>
+                <div style="clear:both;"></div>
+            </li>
+
+            <li>
+                <div class="enum-left">Résumé</div>
+                <div class="enum-right">${show.summary}</div>
+                <div style="clear:both;"></div>
+            </li>
+
+            <li>
+                <div class="enum-left">Acteurs</div>
+                <div class="enum-right">
+                    <ul class="inline">
+                        <c:forEach items="${show.actors}" var="actor">
+                            <li>${actor}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <div style="clear:both;"></div>
+            </li>
+
+            <li>
+                <div class="enum-left">Genres</div>
+                <div class="enum-right">
+                    <ul class="inline">
+                        <c:forEach items="${show.genres}" var="genre">
+                            <li>${genre}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <div style="clear:both;"></div>
+            </li>
+
+            <li>
+                <div class="enum-left">Saisons</div>
+                <div class="enum-right">
+                    <ul class="inline">
+                        <c:forEach items="${seasons}" var="season">
+                            <c:url value="season" var="seasonUrl"><c:param name="id" value="${season.topiaId}"/></c:url>
+
+                            <c:choose>
+                               <c:when test="${season.number==0}"><li><a href="${seasonUrl}">Hors-séries</a></li></c:when>
+                               <c:otherwise><li><a href="${seasonUrl}">Saison ${season.number}</a></li></c:otherwise>
+                            </c:choose>
+
+                        </c:forEach>
+                    </ul>
+                </div>
                 <div style="clear:both;"></div>
             </li>
 
         </ul>
-        
-        <dl class="dl-horizontal">
-            <dt>Statut</dt>
-            <dd>
-                <c:choose>
-                   <c:when test="${show.over}">Terminé</c:when>
-                   <c:otherwise>En cours</c:otherwise>
-                </c:choose>
-            </dd>
-
-            <dt>Pays d'origine</dt>
-            <dd>${show.originCountry}&nbsp;</dd>
-
-            <dt>Chaîne</dt>
-            <dd>${show.network}&nbsp;</dd>
-
-            <dt>Première diffusion</dt>
-            <dd><fmt:formatDate pattern="dd/MM/yyyy" value="${show.firstAired}"/></dd>
-
-            <dt>Résumé</dt>
-            <dd>${show.summary}</dd>
-
-            <dt>Acteurs</dt>
-            <dd>
-                <ul class="inline">
-                    <c:forEach items="${show.actors}" var="actor">
-                        <li>${actor}</li>
-                    </c:forEach>
-                </ul>
-            </dd>
-
-            <dt>Genres</dt>
-            <dd>
-                <ul class="inline">
-                    <c:forEach items="${show.genres}" var="genre">
-                        <li>${genre}</li>
-                    </c:forEach>
-                </ul>
-            </dd>
-
-            <dt>Saisons</dt>
-            <dd>
-                <ul class="inline">
-                    <c:forEach items="${seasons}" var="season">
-                        <c:url value="season" var="seasonUrl"><c:param name="id" value="${season.topiaId}"/></c:url>
-
-                        <c:choose>
-                           <c:when test="${season.number==0}"><li><a href="${seasonUrl}">Hors-séries</a></li></c:when>
-                           <c:otherwise><li><a href="${seasonUrl}">Saison ${season.number}</a></li></c:otherwise>
-                        </c:choose>
-
-                    </c:forEach>
-                </ul>
-            </dd>
-
-        </dl>
         
         <!--img src="http://images.zap2it.com/favicon.ico"/-->
         Plus d'informations :
