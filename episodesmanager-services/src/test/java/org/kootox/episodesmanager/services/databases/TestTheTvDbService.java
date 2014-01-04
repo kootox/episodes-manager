@@ -139,7 +139,7 @@ public class TestTheTvDbService extends AbstractEpisodesManagerServiceTest {
         Show show = showService.getShowByName("Buffy contre les vampires");
 
         assertEquals("The WB", show.getNetwork());
-        assertEquals(new Integer(40), show.getRuntime());
+        assertEquals(new Integer(45), show.getRuntime());
         assertTrue(show.getOver());
         assertEquals("TV-PG", show.getContentRating());
         assertNotNull("Summary should not be null", show.getSummary());
@@ -192,7 +192,7 @@ public class TestTheTvDbService extends AbstractEpisodesManagerServiceTest {
         Show testedShow = showService.getShowByName("Buffy contre les vampires");
 
         assertEquals("The WB", testedShow.getNetwork());
-        assertEquals(new Integer(40), testedShow.getRuntime());
+        assertEquals(new Integer(45), testedShow.getRuntime());
         assertTrue(testedShow.getOver());
         assertEquals("TV-PG", testedShow.getContentRating());
         assertNotNull("Summary should not be null", testedShow.getSummary());
