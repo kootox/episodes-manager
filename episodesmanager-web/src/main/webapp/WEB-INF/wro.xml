@@ -3,6 +3,8 @@
   <group name='episodesmanager'>
     <group-ref>jquery</group-ref>
     <group-ref>bootstrap-responsive</group-ref>
+    <group-ref>angular</group-ref>
+    <group-ref>angular-resource</group-ref>
   </group>
 
 </groups>

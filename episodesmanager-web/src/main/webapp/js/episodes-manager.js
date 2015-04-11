@@ -64,18 +64,5 @@ $(document).ready(function($) {
                 //TODO
             });
     });
-
-//    $(".acquired").click(function() {
-//        var checkbox = $(this);
-//        var id = encodeURIComponent(checkbox.attr('topiaId'));
-//        $.get(createUrl("/acquire?id=", id, "&v=false"),
-//            function(){
-//                //success
-//                checkbox.prop('checked',!checkbox.prop('checked'));
-//            }).fail(function(){
-//                //fail
-//                //TODO
-//            });
-//    });
-
 });
+
